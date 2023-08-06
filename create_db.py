@@ -4,8 +4,8 @@ import psycopg2
 conn = psycopg2.connect(
     host="localhost",
     database="cricket_db",
-    user="postgres",
-    password="1107Mars@"
+    user="*****",
+    password="****"
 )
 
 # Create the Teams table

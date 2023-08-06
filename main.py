@@ -77,6 +77,6 @@ cur.close()
 conn.close()
 
 # Start the match simulation
-total_overs = 2
+total_overs = 10
 match = Match(team1, team2, field, total_overs)
 match.start_match()

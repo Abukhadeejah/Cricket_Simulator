@@ -38,16 +38,17 @@ class Match:
 
         self.commentator.describe_game(self.team1.captain.name, self.team2.captain.name, self.team1.name, self.team2.name, over=self.total_overs)
 
-        batsman_team1 = self.team1.sending_next_player()
-        batsman_team2 = self.team2.sending_next_player()
-        bowler_team1 = self.team1.choose_bowler()         
-        bowler_team2 = self.team2.choose_bowler() 
+        # batsman_team1 = self.team1.sending_next_player()
+        # batsman_team2 = self.team2.sending_next_player()
+        # bowler_team1 = self.team1.choose_bowler()         
+        # bowler_team2 = self.team2.choose_bowler() 
 
         # Team 1 playing
         self.commentator.umpire.scores = 0
         self.commentator.umpire.wickets = 0
         self.commentator.umpire.overs = 0           
-        self.commentator.describe_start(self.team1.name, batsman_team1.name, bowler_team2.name)
+        # self.commentator.describe_start(self.team1.name, batsman_team1.name, bowler_team2.name)
+        self.commentator.describe_start(self.team1.name)
         self.play_innings(self.team1, self.team2)
         self.commentator.describe_end()
         lastScores = self.commentator.umpire.scores
@@ -57,7 +58,8 @@ class Match:
         self.commentator.umpire.scores = 0
         self.commentator.umpire.wickets = 0
         self.commentator.umpire.overs = 0
-        self.commentator.describe_start(self.team2.name, batsman_team2.name, bowler_team1.name)
+        # self.commentator.describe_start(self.team2.name, batsman_team2.name, bowler_team1.name)
+        self.commentator.describe_start(self.team2.name)
         self.play_innings(self.team2, self.team1)
         self.commentator.describe_end()
         newScores = self.commentator.umpire.scores
@@ -80,7 +82,9 @@ class Match:
         ball_count = 1
         over = 0
         bowler = bowling_team.choose_bowler() 
+        print(f"{bowling_team.name}'s {bowler.name} is bowling.")
         batsman = batting_team.sending_next_player()
+        print(f"{batting_team.name}'s {batsman.name} is batting.")
         
         while over < self.total_overs:
             print("\n")
@@ -88,7 +92,7 @@ class Match:
             ball_description = self.commentator.describe_ball(batsman, bowler)
             
             print(ball_description)
-            if ball_description.endswith("OUT!"):
+            if ball_description.endswith("OUT!!!"):
                 batsman = batting_team.sending_next_player()
                 if batsman is None:
                     break
@@ -96,7 +100,7 @@ class Match:
                 print(f"Wickets: {self.umpire.wickets} , Overs: {self.umpire.overs}")
                 print(f"New player {batsman.name} is playing...")
             else:
-                runs = random.randint(0, 6)
+                runs = random.choice([0, 1, 2, 3, 4, 6])
                 self.umpire.update_score(runs)
 
             if ball_count > 5:

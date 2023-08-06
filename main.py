@@ -60,11 +60,11 @@ stadium_rows = cur.fetchall()
 # Create the stadium objects
 stadiums = []
 for row in stadium_rows:
-    stadiums.append(Stadium(row[1], row[2], row[3], row[4], row[5]))
+    stadiums.append(Stadium(row[1], row[2], row[3], row[4]))
 
 # Get the stadium details for the field object constructor
 size = stadiums[0].size
-pitch_conditions = stadiums[0].pitch
+pitch_conditions = random.uniform(0.0, 1.0) 
 fan_ratio = random.uniform(0.0, 1.0) 
 home_advantage = random.uniform(0.0, 1.0)
 

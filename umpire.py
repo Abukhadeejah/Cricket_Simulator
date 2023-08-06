@@ -44,8 +44,8 @@ class Umpire:
         Returns:
             str: The outcome of the ball (either "OUT" or "NOT OUT").
         """
-        batting_prob = batsman.batting * self.field.pitch_conditions * random.random()
-        bowling_prob = bowler.bowling * self.field.pitch_conditions * random.random()
+        batting_prob = batsman.batting * self.field.pitch_conditions * self.field.fan_ratio * random.random()
+        bowling_prob = bowler.bowling * self.field.pitch_conditions * self.field.fan_ratio * random.random()
         if batting_prob > bowling_prob:
             return "OUT"
         return "NOT OUT"

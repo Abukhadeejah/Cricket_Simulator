@@ -22,7 +22,7 @@ class Commentator:
         outcome = self.umpire.predict_outcome(batsman, bowler)
         print("Outcome: ", outcome)
         if outcome == "OUT":
-            description = f"{batsman.name} is OUT!. Fantasric bowling by {bowler.name}!!!"
+            description = f"{batsman.name} is OUT!!!"
         else:
             description = f"{batsman.name} plays the shot."
 
@@ -45,7 +45,7 @@ class Commentator:
         print(f"Over : {over}")
         print("\n---------------------------------------------\n")
 
-    def describe_start(self, team, batsman, bowler):
+    def describe_start(self, team):
         """
         Provide a description of the start of an innings.
         
@@ -54,8 +54,8 @@ class Commentator:
         """
         print("\n------------- GAME STARTED ------------------\n")
         print(f"Team {team} playing: ")
-        print(f"Batsman on strike: {batsman}")
-        print(f"Bowler bowling the first over: {bowler}")
+        # print(f"Batsman on strike: {batsman}")
+        # print(f"Bowler bowling the first over: {bowler}")
         
     
     def describe_end(self):
